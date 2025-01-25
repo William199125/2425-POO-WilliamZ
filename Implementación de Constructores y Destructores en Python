@@ -1,0 +1,46 @@
+class CuentaBancaria:
+    # ejemplos de constructores y destructores Segundo semestre Tegnologias de la Información
+    # Constructor para inicializar los atributos de la cuenta
+    def __init__(self, nombre, edad, cedula, telefono, saldo_inicial):
+        self.nombre = nombre
+        self.edad = edad
+        self.cedula = cedula
+        self.telefono = telefono
+        self.saldo = saldo_inicial
+        print(f"Cuenta creada exitosamente para {self.nombre} con un saldo inicial de ${self.saldo}.")
+
+    # Método para depositar dinero
+    def depositar(self, cantidad):
+        if cantidad > 0:
+            self.saldo += cantidad
+            print(f"Depósito exitoso. Nuevo saldo: ${self.saldo}.")
+        else:
+            print("El monto del depósito debe ser positivo.")
+
+    # Método para retirar dinero
+    def retirar(self, cantidad):
+        if 0 < cantidad <= self.saldo:
+            self.saldo -= cantidad
+            print(f"Retiro exitoso. Nuevo saldo: ${self.saldo}.")
+        else:
+            print("Fondos insuficientes o monto inválido.")
+
+    # Destructor para liberar recursos
+    def __del__(self):
+        print(f"La cuenta de {self.nombre} ha sido cerrada correctamente.")
+
+# Creamos mi primera cuenta
+mi_cuenta = CuentaBancaria(
+    nombre="William Zapata",
+    edad=30,
+    cedula="0503628620",
+    telefono="0991350317",
+    saldo_inicial=100
+)
+
+# Operaciones con la cuenta bancaria
+mi_cuenta.depositar(50)
+mi_cuenta.retirar(30)
+
+# Finalizar el programa y llamar al destructor explícitamente
+del mi_cuenta
