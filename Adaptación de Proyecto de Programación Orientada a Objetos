@@ -1,0 +1,33 @@
+Modularidad y Reutilización:
+
+Creamos la función mostrar_menu_generico para simplificar la creación de menús dinámicos, eliminando la redundancia y mejorando la legibilidad del código.
+Las funciones para manejar menús, submenús y scripts ahora siguen una estructura más clara y reutilizable.
+
+Archivo de Configuración (config.json):
+Tambien se agregó un soporte para un archivo para la configuración, donde se definen dinámicamente las unidades disponibles,
+esto hace que el programa sea más flexible y fácil de actualizar sin modificar el código directamente.
+
+Interfaz Mejorada (colorama):
+Se incorporaron mas colores a la salida del terminal utilizando la librería colorama, lo que mejora la experiencia del usuario y hace que los
+menús sean más visuales e intuitivos.
+
+Manejo de Errores Robustecido:
+Se implementó un sistema de registro de errores (logging) que guardara los mensajes de error en un archivo dashboard.log.
+Esto permite detectar y solucionar problemas con mayor facilidad.
+Se mejoró la validación de entradas para evitar errores al seleccionar opciones inválidas.
+
+Ejecución de Scripts:
+La función para ejecutar_codigo ahora utilizara un subprocess.run en lugar de Popen, proporcionando mayor control y validación durante la ejecución
+de los scripts, tambien se agregó manejo de excepciones para evitar que errores inesperados detengan la ejecución del programa.
+
+Lectura de Scripts:
+La función mostrar_codigo que incluye validaciones adicionales y un manejo de rutas absolutas para garantizar la correcta lectura de archivos.
+Se implementaron mensajes más claros cuando el archivo no se encuentra o no puede ser leído.
+
+Flexibilidad en el Menú:
+Los menús ahora son más dinámicos, adaptándose automáticamente a los datos del archivo config.json y a las subcarpetas y scripts disponibles en cada unidad.
+Se agregó la opción de salir y regresar fácilmente en cada nivel del menú.
+
+Claridad en los Mensajes:
+Se mejoraron los mensajes al usuario, haciéndolos más descriptivos y fáciles de entender.
+Se añadió retroalimentación clara al elegir opciones incorrectas o al completar acciones.
