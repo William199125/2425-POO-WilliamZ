@@ -1,0 +1,161 @@
+class Producto: # Este es un sistema de gestión de inventarios para la tienda mi mi mamá VIVERES ALICIA la cual va digitalizar todo el inventario de su tienda.
+    # tomando en cuenta que con este sistema podra eliminar productos de su inventario asi como añadir productos nuevos.
+    def __init__(self, id_producto, nombre, cantidad, precio):
+        self.id_producto = id_producto
+        self.nombre = nombre
+        self.cantidad = cantidad
+        self.precio = precio
+
+    # Getters y setters
+    def get_id(self):
+        return self.id_producto
+
+    def set_id(self, id_producto):
+        self.id_producto = id_producto
+
+    def get_nombre(self):
+        return self.nombre
+
+    def set_nombre(self, nombre):
+        self.nombre = nombre
+
+    def get_cantidad(self):
+        return self.cantidad
+
+    def set_cantidad(self, cantidad):
+        self.cantidad = cantidad
+
+    def get_precio(self):
+        return self.precio
+
+    def set_precio(self, precio):
+        self.precio = precio
+
+    def __str__(self):
+        return f"ID: {self.id_producto}, Nombre: {self.nombre}, Cantidad: {self.cantidad}, Precio: {self.precio}"
+
+
+class Inventario:
+    def __init__(self):
+        self.productos = []
+
+    # Añadir nuevo producto
+    def añadir_producto(self, producto):
+        # Comprobar que el ID es único
+        for p in self.productos:
+            if p.get_id() == producto.get_id():
+                print("Error: El ID ya existe.")
+                return
+        self.productos.append(producto)
+
+    # Eliminar producto por ID
+    def eliminar_producto(self, id_producto):
+        for p in self.productos:
+            if p.get_id() == id_producto:
+                self.productos.remove(p)
+                print(f"Producto con ID {id_producto} eliminado.")
+                return
+        print("Producto no encontrado.")
+
+    # Actualizar cantidad o precio por ID
+    def actualizar_producto(self, id_producto, cantidad=None, precio=None):
+        for p in self.productos:
+            if p.get_id() == id_producto:
+                if cantidad is not None:
+                    p.set_cantidad(cantidad)
+                if precio is not None:
+                    p.set_precio(precio)
+                print(f"Producto con ID {id_producto} actualizado.")
+                return
+        print("Producto no encontrado.")
+
+    # Buscar producto(s) por nombre
+    def buscar_producto(self, nombre):
+        encontrados = [p for p in self.productos if nombre.lower() in p.get_nombre().lower()]
+        if encontrados:
+            for p in encontrados:
+                print(p)
+        else:
+            print("No se encontraron productos con ese nombre.")
+
+    # Mostrar todos los productos
+    def mostrar_inventario(self):
+        if self.productos:
+            for p in self.productos:
+                print(p)
+        else:
+            print("El inventario está vacío.")
+
+
+# Interfaz de Usuario en la Consola
+def menu():
+    inventario = Inventario()
+    while True:
+        print("\nSistema de Gestión de Inventarios")
+        print("1. Añadir Producto")
+        print("2. Eliminar Producto")
+        print("3. Actualizar Producto")
+        print("4. Buscar Producto")
+        print("5. Mostrar Inventario")
+        print("6. Salir")
+
+        opcion = input("Selecciona una opción: ")
+
+        if opcion == "1":
+            id_producto = input("Introduce el ID del producto: ")
+            nombre = input("Introduce el nombre del producto: ")
+            cantidad = int(input("Introduce la cantidad del producto: "))
+            precio = float(input("Introduce el precio del producto: "))
+            producto = Producto(id_producto, nombre, cantidad, precio)
+            inventario.añadir_producto(producto)
+
+        elif opcion == "2":
+            id_producto = input("Introduce el ID del producto a eliminar: ")
+            inventario.eliminar_producto(id_producto)
+
+        elif opcion == "3":
+            id_producto = input("Introduce el ID del producto a actualizar: ")
+            cantidad = input("Introduce la nueva cantidad (deja en blanco si no quieres actualizar): ")
+            precio = input("Introduce el nuevo precio (deja en blanco si no quieres actualizar): ")
+            cantidad = int(cantidad) if cantidad else None
+            precio = float(precio) if precio else None
+            inventario.actualizar_producto(id_producto, cantidad, precio)
+
+        elif opcion == "4":
+            nombre = input("Introduce el nombre del producto a buscar: ")
+            inventario.buscar_producto(nombre)
+
+        elif opcion == "5":
+            inventario.mostrar_inventario()
+
+        elif opcion == "6":
+            print("Saliendo del sistema.")
+            break
+
+        else:
+            print("Opción no válida. Por favor, selecciona una opción entre 1 y 6.")
+
+
+# Ejecutar el menú
+if __name__ == "__main__":
+    menu()
+
+Clase Producto:
+
+Se define la clase con los atributos: id_producto, nombre, cantidad y precio.
+Tiene métodos getters y setters para cada uno de estos atributos.
+También se incluye un método __str__ para mostrar los detalles del producto en un formato legible.
+Clase Inventario:
+
+Esta clase contiene una lista productos donde se almacenan los objetos Producto.
+Métodos para añadir, eliminar, actualizar (cantidad o precio), buscar productos por nombre, y mostrar todos los productos.
+Interfaz de usuario en la consola:
+
+Un menú interactivo que permite al usuario final seleccionar las diferentes opciones para gestionar los productos.
+Las operaciones del menú permiten al usuario agregar, eliminar, actualizar, buscar o mostrar productos en el inventario.
+Funcionamiento del programa:
+Añadir Producto: El usuario introduce el ID, nombre, cantidad y precio del producto. Si el ID es único, se añade al inventario.
+Eliminar Producto: El usuario puede eliminar un producto por su ID.
+Actualizar Producto: El usuario puede actualizar la cantidad o el precio de un producto mediante su ID.
+Buscar Producto: El usuario puede buscar productos por nombre (se permite búsqueda parcial).
+Mostrar Inventario: El usuario puede ver todos los productos almacenados en el inventario.
