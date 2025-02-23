@@ -1,0 +1,17 @@
+Explicación de los cambios:
+Almacenamiento y recuperación desde archivo:
+Se modificó la clase Inventario para que utilice un archivo de texto (inventario.txt) para almacenar y recuperar
+los productos.
+Se implementó el método cargar_inventario() para leer los productos desde el archivo al iniciar el programa.
+Si el archivo no existe, se notificará al usuario y se creará uno nuevo.
+El método guardar_inventario() se llama cada vez que se agrega, elimina o actualiza un producto, asegurando que
+el archivo se mantenga sincronizado con el inventario.
+
+Manejo de excepciones:
+Se añadieron excepciones para manejar posibles errores al leer y escribir en el archivo, como FileNotFoundError
+y PermissionError.
+Se añadieron excepciones genéricas para capturar otros posibles errores, como problemas de formato en los datos
+del archivo.
+
+Interfaz de usuario:
+La interfaz de usuario ahora informa al usuario cuando un producto se añade, actualiza o elimina correctamente, y también muestra mensajes en caso de errores.
