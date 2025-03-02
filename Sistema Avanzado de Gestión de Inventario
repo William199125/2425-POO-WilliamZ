@@ -1,0 +1,8 @@
+Descripción:
+Clase Producto: Representamos un producto del inventario con atributos como ID, nombre, cantidad y precio. Contiene métodos para obtener y establecer estos atributos.
+Clase Inventario: Administramos una colección de productos en un diccionario. Ofrece métodos para agregar, eliminar, actualizar, buscar y mostrar productos. También tiene métodos para guardar y cargar el inventario desde un archivo JSON.
+Función menu: Proporciona una interfaz interactiva en la consola para que el usuario pueda gestionar el inventario.
+Cómo funciona:
+Cuando el programa inicia, carga el inventario desde un archivo llamado inventario.json. Si el archivo no existe, el sistema lo crea.
+El usuario puede añadir, eliminar, actualizar, buscar y mostrar productos desde el menú interactivo.
+Los cambios en el inventario se guardan en el archivo inventario.json al salir del programa.
