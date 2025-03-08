@@ -1,0 +1,23 @@
+Explicación del codigo Sistema de gestion de biblioteca digital:
+Clase Libro:
+Representamos los libros con atributos como titulo, autor, categoria e isbn.
+Los atributos titulo y autor no cambian una vez que el libro es creado en la base de datos, por lo que se almacenan
+como tuplas (aunque en este caso no es estrictamente necesario, ya que son atributos simples).
+
+Clase Usuario:
+A los usuarios les creamos un nombre, un ID único y una lista de libros prestados.
+Los métodos prestar_libro y devolver_libro permiten gestionar el préstamo y devolución de libros.
+
+Clase Biblioteca:
+Gestiona una colección de libros usando un diccionario (clave: isbn, valor: Libro).
+Utiliza un conjunto (set) para asegurar que los usuarios sean únicos.
+Implementa métodos para añadir, quitar, prestar, devolver libros y buscar libros por título, autor o categoría.
+También incluye un método para listar los libros prestados a un usuario.
+
+Funcionalidades:
+Añadir/quitar libros: Usamos los métodos añadir_libro y quitar_libro para gestionar los libros en la biblioteca.
+Registrar/dar de baja usuarios: Los usuarios son gestionados con los métodos registrar_usuario y dar_baja_usuario.
+Prestar/devolver libros: Los métodos prestar_libro y devolver_libro permiten manejar los préstamos de libros.
+Buscar libros: El método buscar_libro permite buscar libros por título, autor o categoría.
+Listar libros prestados: El método listar_libros_prestados muestra los libros que un usuario tiene prestados.
+
