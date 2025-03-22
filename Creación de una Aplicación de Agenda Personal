@@ -1,0 +1,7 @@
+En esta agenda vamos a tratar de organizar de mejor manera la agenda diaria para mis actividades diarias en
+mi trabajo como Militar en servicio activo
+Vamos a aplicar GUI utilizando Tkinter en una agenda personal esto nos permitira agregar, ver, y eliminar eventos o
+tareas programadas
+En este ejemplo estamos incluyendo un DatePicker usando la biblioteca  para facilitar la selección de fechas.
+El código está estructurado, utilizando  para organizar los elementos gráficos de manera lógica.
+
