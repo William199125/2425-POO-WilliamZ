@@ -1,0 +1,12 @@
+Explicación:
+Interfaz Gráfica:
+Se utilizo Tkinter para crear la interfaz con un campo de entrada (Entry), botones y una lista de tareas (Listbox).
+Los botones permiten añadir tareas, marcar tareas como completadas y eliminar tareas.
+
+Manejo de Eventos:
+Los eventos se manejan al hacer clic en los botones y al presionar la tecla Enter para añadir una tarea.
+Además, se ha implementado la opción de marcar una tarea como completada o eliminarla seleccionando una tarea de la lista.
+
+Lógica de la Aplicación:
+Las tareas se añaden a la lista de tareas, se marcan como completadas o se eliminan según las acciones del usuario.
+Los eventos de usuario en este caso es para mi como clics del mouse y pulsaciones del teclado son gestionados adecuadamente.
