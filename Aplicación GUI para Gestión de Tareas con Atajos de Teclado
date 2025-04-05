@@ -1,0 +1,88 @@
+# Guardamos el código de la aplicación en un archivo .py para que el usuario pueda descargarlo
+
+codigo_fuente = """
+import tkinter as tk
+from tkinter import messagebox
+
+class TaskManager:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Gestor de Tareas")
+
+        self.task_input = tk.Entry(root, font=("Arial", 14))
+        self.task_input.pack(pady=10)
+        self.task_input.focus()
+
+        button_frame = tk.Frame(root)
+        button_frame.pack()
+
+        self.add_button = tk.Button(button_frame, text="Añadir", command=self.add_task)
+        self.add_button.pack(side=tk.LEFT, padx=5)
+
+        self.complete_button = tk.Button(button_frame, text="Completar", command=self.complete_task)
+        self.complete_button.pack(side=tk.LEFT, padx=5)
+
+        self.delete_button = tk.Button(button_frame, text="Eliminar", command=self.delete_task)
+        self.delete_button.pack(side=tk.LEFT, padx=5)
+
+        self.task_listbox = tk.Listbox(root, selectmode=tk.SINGLE, font=("Arial", 14), width=40)
+        self.task_listbox.pack(pady=10)
+
+        # Diccionario para llevar control de tareas completadas
+        self.completed_tasks = {}
+
+        # Bindings de teclas
+        root.bind("<Return>", lambda event: self.add_task())
+        root.bind("<c>", lambda event: self.complete_task())
+        root.bind("<C>", lambda event: self.complete_task())
+        root.bind("<Delete>", lambda event: self.delete_task())
+        root.bind("<d>", lambda event: self.delete_task())
+        root.bind("<D>", lambda event: self.delete_task())
+        root.bind("<Escape>", lambda event: self.root.quit())
+
+    def add_task(self):
+        task = self.task_input.get().strip()
+        if task:
+            self.task_listbox.insert(tk.END, task)
+            self.completed_tasks[task] = False
+            self.task_input.delete(0, tk.END)
+        else:
+            messagebox.showwarning("Advertencia", "No puedes añadir una tarea vacía.")
+
+    def complete_task(self):
+        selected = self.task_listbox.curselection()
+        if selected:
+            index = selected[0]
+            task = self.task_listbox.get(index)
+            if not self.completed_tasks.get(task, False):
+                self.task_listbox.delete(index)
+                completed_task = f"✔ {task}"
+                self.task_listbox.insert(index, completed_task)
+                self.completed_tasks[completed_task] = True
+                del self.completed_tasks[task]
+        else:
+            messagebox.showinfo("Info", "Selecciona una tarea para completarla.")
+
+    def delete_task(self):
+        selected = self.task_listbox.curselection()
+        if selected:
+            index = selected[0]
+            task = self.task_listbox.get(index)
+            self.task_listbox.delete(index)
+            if task in self.completed_tasks:
+                del self.completed_tasks[task]
+        else:
+            messagebox.showinfo("Info", "Selecciona una tarea para eliminarla.")
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = TaskManager(root)
+    root.mainloop()
+"""
+
+# Guardamos el archivo en el sistema
+file_path = "/mnt/data/gestor_tareas_gui.py"
+with open(file_path, "w", encoding="utf-8") as f:
+    f.write(codigo_fuente)
+
+file_path
